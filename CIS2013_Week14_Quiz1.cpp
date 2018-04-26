@@ -35,11 +35,12 @@ class game{
 
 class Mine_Sweeper: public game{
 	private:
-		int board_size;
+		int board[1000][1000];
 		int board_rows;
 		int board_columns;
 		int selected_squares;
 		int bomb_squares;
+		int mines;
 		char x = '-';
 		char y = '-';
 	public:
@@ -57,17 +58,44 @@ class Mine_Sweeper: public game{
 			cout << "Please enter the number of COLUMNS you would like: "<<endl;
 			cin >> board_columns;
 			
-			/*for(int i=0; i < board_rows; i++){
+			for(int i=0; i < board_rows; i++){
 				
 				for(int j=0; j < board_columns; j++){
-					cin >> board_size;
+					 board[i][j] = 0;
 				}
 				cout << endl;
-			}*/
+			}
+			
+			for(int i = 0; i < mines; i++)
+
+		{
+
+			int X = (rand() % board_rows);
+
+			int Y = (rand() % board_columns);
+
+			if(bomb_squares[X][Y] != 1)
+
+			{
+
+				bomb_squares[X][Y] = 1;	
+
+			}
+
+			else
+
+			{
+
+				i--;
+
+			}
+
+		}
+			
 		}
 		void setmines(){
 			cout << "How many mines would you like to have?"<<endl;
-			cin >> bomb_squares;
+			cin >> mines;
 		}
 		
 		
@@ -88,8 +116,8 @@ class Mine_Sweeper: public game{
 		}
 		Mine_Sweeper(){
 			setname();
-			setsize();
 			setmines();
+			setsize();
 			print_board();
 		}
 		
