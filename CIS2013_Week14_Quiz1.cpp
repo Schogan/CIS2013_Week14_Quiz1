@@ -38,11 +38,11 @@ class Mine_Sweeper: public game{
 		int board[1000][1000];
 		int board_rows;
 		int board_columns;
-		int selected_squares;
-		int bomb_squares;
+		int selected_squares[x][y];
+		int bomb_squares[1000][1000];
 		int mines;
-		char x = '-';
-		char y = '-';
+		int x = 1;
+		int y = 1;
 	public:
 	
 		
@@ -102,9 +102,9 @@ class Mine_Sweeper: public game{
 		void print_board(){
 			cout << "----------------------------------------------" << endl;
 			for(int i=0; i < board_rows; i++){
-				cout << " - ";
+				//cout << " - ";
 				for(int j=0; j < board_columns; j++){
-					cout << "- ";
+					cout << board[i][j] <<" ";
 				}
 				cout << endl;
 			}
@@ -112,6 +112,11 @@ class Mine_Sweeper: public game{
 		}
 		
 		void get_square(){
+			cout << "Please select your coordinates X and Y: "<< endl;
+			cout << "X: ";
+			cin >> x;
+			cout << "Y: ";
+			cin >> y;
 			
 		}
 		Mine_Sweeper(){
